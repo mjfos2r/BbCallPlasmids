@@ -2,7 +2,6 @@ version 1.0
 import "Structs.wdl"
 
 workflow BbCallPlasmids {
-
     meta { description: "Simple workflow to classify contigs in Borrelia burgdorferi draft assemblies." }
     parameter_meta {
         sample_id: "sample_id for the assembly we're classifying"
@@ -18,11 +17,11 @@ workflow BbCallPlasmids {
             input_fa = input_fa
     }
     output {
-        File renamed_fasta = CallPlasmids.renamed_fasta
-        File pf32_hits = CallPlasmids.pf32_hits
-        File wp_hits = CallPlasmids.wp_hits
-        File best_hits_json = CallPlasmids.best_hits_json
-        File best_hits_tsv = CallPlasmids.best_hits_tsv
+        File BbCP_renamed_contigs = CallPlasmids.renamed_contigs
+        File BbCP_pf32_hits = CallPlasmids.pf32_hits
+        File BbCP_wp_hits = CallPlasmids.wp_hits
+        File BbCP_best_hits_json = CallPlasmids.best_hits_json
+        File BbCP_best_hits_tsv = CallPlasmids.best_hits_tsv
     }
 }
 
@@ -48,7 +47,7 @@ task CallPlasmids {
     >>>
 
     output {
-        File renamed_fasta = "results/~{sample_id}_renamed.fasta"
+        File renamed_contigs = "results/~{sample_id}_renamed.fasta"
         File pf32_hits = "pf32_hits.tar.gz"
         File wp_hits = "wp_hits.tar.gz"
         File best_hits_json = "results/summary_best_hits.json"
