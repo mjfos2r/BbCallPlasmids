@@ -61,7 +61,7 @@ task CallPlasmids {
         boot_disk_gb:       25,
         preemptible_tries:  0,
         max_retries:        0,
-        docker:             "mjfos2r/plasmid_caller:6.0.0"
+        docker:             "mjfos2r/plasmid_caller:latest"
     }
     RuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
     runtime {
