@@ -49,8 +49,8 @@ task CallPlasmids {
 
     output {
         File renamed_fasta = "results/~{sample_id}_renamed.fasta"
-        File pf32_hits = "results/pf32_hits.tar.gz"
-        File wp_hits = "results/wp_hits.tar.gz"
+        File pf32_hits = "pf32_hits.tar.gz"
+        File wp_hits = "wp_hits.tar.gz"
         File best_hits_json = "results/summary_best_hits.json"
         File best_hits_tsv = "results/summary_best_hits.tsv"
     }
