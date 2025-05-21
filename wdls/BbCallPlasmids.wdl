@@ -40,19 +40,19 @@ task CallPlasmids {
     command <<<
         plasmid_caller \
             -i "~{input_fa}" \
-            -o "output" \
+            -o "results" \
             -t 8
-
-        tar -czvf pf32_hits.tar.gz output/pf32 --strip-components=1
-        tar -czvf wp_hits.tar.gz output/wp --strip-components=1
+        mv results/*.fasta results/"~{sample_id}_renamed.fasta"
+        tar -czvf pf32_hits.tar.gz results/pf32 --strip-components=1
+        tar -czvf wp_hits.tar.gz results/wp --strip-components=1
     >>>
 
     output {
-        File renamed_fasta = "output/~{sample_id}_renamed.fasta"
-        File pf32_hits = "output/pf32_hits.tar.gz"
-        File wp_hits = "output/wp_hits.tar.gz"
-        File best_hits_json = "output/summary_best_hits.json"
-        File best_hits_tsv = "output/summary_best_hits.tsv"
+        File renamed_fasta = "results/~{sample_id}_renamed.fasta"
+        File pf32_hits = "results/pf32_hits.tar.gz"
+        File wp_hits = "results/wp_hits.tar.gz"
+        File best_hits_json = "results/summary_best_hits.json"
+        File best_hits_tsv = "results/summary_best_hits.tsv"
     }
     #########################
     RuntimeAttr default_attr = object {
