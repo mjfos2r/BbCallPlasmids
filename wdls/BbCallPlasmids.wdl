@@ -42,14 +42,14 @@ task CallPlasmids {
             -o "results" \
             -t 8
         mv results/*.fasta results/"~{sample_id}_renamed.fasta"
-        tar -C results -czvf pf32_hits.tar.gz pf32
-        tar -C results -czvf wp_hits.tar.gz wp
+        tar -C results -czvf results/pf32_hits.tar.gz pf32
+        tar -C results -czvf results/wp_hits.tar.gz wp
     >>>
 
     output {
         File renamed_contigs = "results/~{sample_id}_renamed.fasta"
-        File pf32_hits = "pf32_hits.tar.gz"
-        File wp_hits = "wp_hits.tar.gz"
+        File pf32_hits = "results/pf32_hits.tar.gz"
+        File wp_hits = "results/wp_hits.tar.gz"
         File best_hits_json = "results/summary_best_hits.json"
         File best_hits_tsv = "results/summary_best_hits.tsv"
     }
