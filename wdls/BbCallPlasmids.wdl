@@ -43,8 +43,8 @@ task CallPlasmids {
             -o "results" \
             -t 8
         mv results/*.fasta results/"~{sample_id}_renamed.fasta"
-        tar -czvf pf32_hits.tar.gz results/pf32 --strip-components=1
-        tar -czvf wp_hits.tar.gz results/wp --strip-components=1
+        tar -C results -czvf pf32_hits.tar.gz pf32
+        tar -C results -czvf wp_hits.tar.gz wp
     >>>
 
     output {
