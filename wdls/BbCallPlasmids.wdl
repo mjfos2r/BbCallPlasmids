@@ -43,8 +43,8 @@ task CallPlasmids {
             -o "output" \
             -t 8
 
-        tar -czvf pf32_hits.tar.gz pf32 -C output/
-        tar -czvf wp_hits.tar.gz wp -C output/
+        tar -czvf pf32_hits.tar.gz output/pf32 --strip-components=1
+        tar -czvf wp_hits.tar.gz output/wp --strip-components=1
     >>>
 
     output {
