@@ -3,3 +3,4 @@ workflows:
 - name: BbCallPlasmids
   subclass: wdl
   primaryDescriptorPath: /wdls/BbCallPlasmids.wdl
+

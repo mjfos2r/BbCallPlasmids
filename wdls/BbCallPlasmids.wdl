@@ -22,6 +22,7 @@ workflow BbCallPlasmids {
         File BbCP_wp_hits = CallPlasmids.wp_hits
         File BbCP_best_hits_json = CallPlasmids.best_hits_json
         File BbCP_best_hits_tsv = CallPlasmids.best_hits_tsv
+        File BbCP_version = CallPlasmids.version
     }
 }
 
@@ -37,6 +38,9 @@ task CallPlasmids {
     }
     Int disk_size = 50 + 10 * ceil(size(input_fa, "GB"))
     command <<<
+
+        plasmid_caller --version > plasmid_caller_version.txt
+
         plasmid_caller \
             -i "~{input_fa}" \
             -o "results" \
@@ -52,6 +56,7 @@ task CallPlasmids {
         File wp_hits = "results/wp_hits.tar.gz"
         File best_hits_json = "results/summary_best_hits.json"
         File best_hits_tsv = "results/summary_best_hits.tsv"
+        File version = "plasmid_caller_version.txt"
     }
     #########################
     RuntimeAttr default_attr = object {
