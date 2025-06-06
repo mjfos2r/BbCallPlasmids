@@ -45,7 +45,7 @@ task CallPlasmids {
             -i "~{input_fa}" \
             -o "results" \
             -t 8
-        mv results/*.fasta results/"~{sample_id}_renamed.fasta"
+        seqkit sort -l results/*.fasta >results/"~{sample_id}_renamed.fasta"
         tar -C results -czvf results/pf32_hits.tar.gz pf32
         tar -C results -czvf results/wp_hits.tar.gz wp
     >>>
